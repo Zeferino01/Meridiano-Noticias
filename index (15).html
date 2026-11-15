@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridiano — Notícias do Mundo em Tempo Real</title>
+<meta name="description" content="Notícias globais em tempo real: mundo, negócios, tecnologia, ciência, saúde, desporto e entretenimento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700;6..72,800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14110F;--paper:#F2EDE3;--card:#FAF7F0;--line:#D9D1C1;--mute:#6E665A;--accent:#9E2A1B;--gold:#B98A3E;--serif:'Newsreader',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root{--ink:#F2EDE3;--paper:#14110F;--card:#1D1915;--line:#352E26;--mute:#A0968A;--accent:#E0553F;--gold:#D4A857}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+.top{background:#14110F;color:#E9E2D4;font-size:12px;letter-spacing:.04em}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:36px;gap:12px}
+.live{display:flex;align-items:center;gap:8px;font-weight:800;text-transform:uppercase}
+.live i{width:8px;height:8px;border-radius:50%;background:#E0553F;animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.25}}
+.top select{background:transparent;color:inherit;border:1px solid #4a4238;border-radius:4px;padding:3px 6px;font:inherit}
+.top option{color:#14110F}
+.mast{text-align:center;padding:28px 0 18px;border-bottom:3px double var(--ink)}
+.logo{font-family:var(--serif);font-weight:800;font-size:clamp(38px,7vw,72px);letter-spacing:-.02em;line-height:1}
+.logo b{color:var(--accent)}
+.tag{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin-top:8px}
+nav{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav button{background:none;border:0;border-bottom:3px solid transparent;color:var(--mute);font:700 13px var(--sans);text-transform:uppercase;letter-spacing:.08em;padding:15px 12px;cursor:pointer;white-space:nowrap}
+nav button:hover{color:var(--ink)}
+nav button.on{color:var(--ink);border-color:var(--accent)}
+.search{margin-left:auto;display:flex}
+.search input{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:8px 12px;border-radius:999px;font:500 13px var(--sans);width:190px}
+.search input:focus{outline:2px solid var(--gold)}
+.ticker{background:var(--accent);color:#fff;overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-block;padding:9px 0;font-size:13px;font-weight:700;animation:t 70s linear infinite}
+.ticker span{margin:0 28px}.ticker span:before{content:"●";margin-right:10px;color:#F4D9A0;font-size:9px}
+@keyframes t{to{transform:translateX(-50%)}}
+main{padding:30px 0 60px}
+.sec{display:flex;align-items:center;gap:14px;margin:0 0 18px;font:800 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.sec:after{content:"";flex:1;height:1px;background:var(--line)}
+.lead{display:grid;grid-template-columns:1.7fr 1fr;gap:30px;margin-bottom:44px}
+.hero{position:relative;display:block}
+.img{aspect-ratio:16/9;background:linear-gradient(135deg,#2a2420,#9E2A1B 140%);overflow:hidden;border-radius:2px}
+.img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+a:hover .img img{transform:scale(1.04)}
+.hero h2{font:800 clamp(26px,3.4vw,42px)/1.1 var(--serif);margin:16px 0 10px;letter-spacing:-.01em}
+.hero p{color:var(--mute);font-size:16px;max-width:62ch}
+.meta{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;gap:10px;flex-wrap:wrap}
+.meta em{font-style:normal;color:var(--accent)}
+.side{display:flex;flex-direction:column;border-left:1px solid var(--line);padding-left:30px}
+.side a{padding:16px 0;border-bottom:1px solid var(--line)}
+.side a:first-child{padding-top:0}.side a:last-child{border:0}
+.side h3{font:700 19px/1.25 var(--serif);margin:6px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:34px 26px}
+.card h3{font:700 21px/1.2 var(--serif);margin:12px 0 8px}
+.card p{font-size:14px;color:var(--mute);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px}
+.card .meta{margin-top:6px}
+.sk{background:linear-gradient(90deg,var(--line),var(--card),var(--line));background-size:200% 100%;animation:s 1.3s infinite;border-radius:2px;height:230px}
+@keyframes s{to{background-position:-200% 0}}
+.msg{text-align:center;padding:70px 20px;color:var(--mute);grid-column:1/-1}
+.msg b{display:block;font:700 26px var(--serif);color:var(--ink);margin-bottom:8px}
+.msg button{margin-top:16px;background:var(--ink);color:var(--paper);border:0;padding:10px 22px;border-radius:999px;font:700 13px var(--sans);cursor:pointer}
+.ad{margin:0 auto;text-align:center}
+.ad small{display:block;font:700 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.ad-slot{display:flex;align-items:center;justify-content:center;margin:0 auto;max-width:100%;overflow:hidden}
+.ad-slot.ph{border:1px dashed var(--gold);background:repeating-linear-gradient(45deg,transparent 0 10px,rgba(185,138,62,.07) 10px 20px);color:var(--mute);font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.ad-top{padding:18px 0 0}.ad-top .ad-slot{width:728px;height:90px}
+.ad-side{margin-top:22px;position:sticky;top:70px}.ad-side .ad-slot{width:300px;height:250px}
+.ad-in{grid-column:1/-1;padding:10px 0;border-block:1px solid var(--line)}.ad-in .ad-slot{width:728px;height:90px}
+.ad-bot{padding:0 0 40px}.ad-bot .ad-slot{width:970px;height:90px}
+@media(max-width:860px){.ad-top .ad-slot,.ad-in .ad-slot,.ad-bot .ad-slot{width:320px;height:100px}.ad-side{position:static}.ad-side .ad-slot{width:300px}}
+footer{background:#14110F;color:#B9AF9F;padding:40px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer .logo{font-size:28px;color:#F2EDE3}
+@media(max-width:860px){.lead{grid-template-columns:1fr}.side{border:0;padding:0}.search input{width:130px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+<div class="live"><i></i>Ao vivo <span id="date" style="font-weight:500;text-transform:none;opacity:.8"></span></div>
+<label>Edição: <select id="ed">
+<option value="world">Mundo (PT)</option><option value="br">Brasil</option><option value="pt">Portugal</option>
+<option value="us">EUA</option><option value="gb">Reino Unido</option><option value="za">África do Sul</option>
+<option value="ng">Nigéria</option><option value="fr">França</option><option value="ae">Emirados</option></select></label>
+</div></div>
+<header class="mast wrap"><a href="/" class="logo">Meridi<b>ano</b></a><div class="tag">O mundo em tempo real</div></header>
+<nav><div class="wrap" id="nav"></div></nav>
+<div class="ticker" id="tk" hidden><div id="tki"></div></div>
+<div class="ad ad-top wrap"><small>Publicidade</small><div class="ad-slot" data-slot="top" data-label="Anúncio topo 728×90"></div></div>
+<main class="wrap"><div id="out"></div></main>
+<div class="ad ad-bot wrap"><small>Publicidade</small><div class="ad-slot" data-slot="bottom" data-label="Anúncio rodapé 970×90"></div></div>
+<footer><div class="wrap"><div><div class="logo">Meridiano</div><div style="margin-top:8px">Atualizado automaticamente a cada 5 minutos.</div></div><div>Fontes: agências e meios internacionais via NewsAPI.<br>© <span id="yr"></span> Meridiano</div></div></footer>
+<script>
+const CATS=[['mundo','Mundo'],['negocios','Negócios'],['tecnologia','Tecnologia'],['ciencia','Ciência'],['saude','Saúde'],['desporto','Desporto'],['entretenimento','Entretenimento']];
+/* ===== ANÚNCIOS: cole o código do AdSense/Adsterra/banner em cada espaço (entre crases). Vazio = mostra espaço reservado. ===== */
+const ADS={
+  top:``,      // 728x90 (abaixo do menu)
+  side:``,     // 300x250 (barra lateral, fixa ao rolar)
+  infeed:``,   // 728x90 (repete a cada 6 notícias)
+  bottom:``,   // 970x90 (antes do rodapé)
+  social:``    // Social Bar (Adsterra etc.): cole aqui o <script> — carrega uma vez e flutua sobre a página
+};
+function loadSocial(){const h=ADS.social;if(!h||!h.trim())return;const c=document.createElement('div');c.id='social-bar';c.innerHTML=h;document.body.appendChild(c);
+  c.querySelectorAll('script').forEach(o=>{const n=document.createElement('script');[...o.attributes].forEach(a=>n.setAttribute(a.name,a.value));n.text=o.text;o.replaceWith(n)})}
+function fillAds(){document.querySelectorAll('.ad-slot:not([data-done])').forEach(el=>{
+  el.dataset.done=1;const h=ADS[el.dataset.slot];
+  if(!h||!h.trim()){el.classList.add('ph');el.textContent=el.dataset.label||'Espaço publicitário';return}
+  el.innerHTML=h;el.querySelectorAll('script').forEach(o=>{const n=document.createElement('script');[...o.attributes].forEach(a=>n.setAttribute(a.name,a.value));n.text=o.text;o.replaceWith(n)})})}
+const S={cat:'mundo',ed:'world',q:''};
+const $=id=>document.getElementById(id);
+const esc=s=>(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safe=u=>/^https?:\/\//.test(u||'')?u:'#';
+const ago=d=>{const m=Math.max(1,Math.round((Date.now()-new Date(d))/6e4));return m<60?`há ${m} min`:m<1440?`há ${Math.round(m/60)} h`:`há ${Math.round(m/1440)} d`};
+$('date').textContent=new Date().toLocaleDateString('pt-PT',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+$('yr').textContent=new Date().getFullYear();
+$('nav').innerHTML=CATS.map(([k,l])=>`<button data-c="${k}" class="${k===S.cat?'on':''}">${l}</button>`).join('')+'<form class="search" id="sf"><input id="q" type="search" placeholder="Pesquisar notícias…"></form>';
+$('nav').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.cat=b.dataset.c;S.q='';$('q').value='';document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));load()};
+$('sf').onsubmit=e=>{e.preventDefault();S.q=$('q').value.trim();document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));load()};
+$('ed').onchange=e=>{S.ed=e.target.value;load()};
+const img=a=>`<div class="img">${a.urlToImage?`<img src="${esc(safe(a.urlToImage))}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div>`;
+const meta=a=>`<div class="meta"><em>${esc(a.source?.name)}</em><span>${ago(a.publishedAt)}</span></div>`;
+function skeleton(){$('out').innerHTML='<div class="grid">'+'<div class="sk"></div>'.repeat(6)+'</div>'}
+function msg(t,d){$('out').innerHTML=`<div class="grid"><div class="msg"><b>${t}</b>${d}<br><button onclick="load()">Tentar novamente</button></div></div>`}
+async function load(){
+  skeleton();
+  try{
+    const p=new URLSearchParams({cat:S.cat,ed:S.ed});if(S.q)p.set('q',S.q);
+    const r=await fetch('/api/news?'+p),d=await r.json();
+    if(d.status==='error'||d.error)throw new Error(d.message||d.error);
+    const L=(d.articles||[]).filter(a=>a.title&&a.title!=='[Removed]'&&a.url);
+    if(!L.length)return msg('Sem resultados','Tente outra categoria, edição ou termo de pesquisa.');
+    const wi=L.findIndex(a=>a.urlToImage),h=L.splice(wi<0?0:wi,1)[0],side=L.splice(0,4),title=S.q?`Resultados: ${esc(S.q)}`:CATS.find(c=>c[0]===S.cat)[1];
+    $('tk').hidden=false;$('tki').innerHTML=[...side,...L.slice(0,8),h].concat([...side,...L.slice(0,8),h]).map(a=>`<span>${esc(a.title)}</span>`).join('');
+    $('out').innerHTML=`<div class="sec">${title}</div><section class="lead">
+    <a class="hero" href="${esc(safe(h.url))}" target="_blank" rel="noopener">${img(h)}<div class="meta" style="margin-top:14px"><em>${esc(h.source?.name)}</em><span>${ago(h.publishedAt)}</span></div><h2>${esc(h.title)}</h2><p>${esc(h.description)}</p></a>
+    <div class="side">${side.map(a=>`<a href="${esc(safe(a.url))}" target="_blank" rel="noopener">${meta(a)}<h3>${esc(a.title)}</h3></a>`).join('')}<div class="ad ad-side"><small>Publicidade</small><div class="ad-slot" data-slot="side" data-label="Anúncio 300×250"></div></div></div></section>
+    <div class="sec">Mais notícias</div><div class="grid">${L.map((a,i)=>(i&&i%6===0?'<div class="ad ad-in"><small>Publicidade</small><div class="ad-slot" data-slot="infeed" data-label="Anúncio in-feed 728×90"></div></div>':'')+`<a class="card" href="${esc(safe(a.url))}" target="_blank" rel="noopener">${img(a)}${meta(a)}<h3>${esc(a.title)}</h3><p>${esc(a.description)}</p></a>`).join('')}</div>`;fillAds();
+  }catch(e){msg('Não foi possível carregar',esc(e.message||'Verifique a configuração da API.'))}
+}
+loadSocial();fillAds();load();setInterval(load,3e5);
+</script>
+</body>
+</html>
